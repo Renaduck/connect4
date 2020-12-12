@@ -1,0 +1,129 @@
+/* 
+REQUIREMENTS:
+-board with 42 windows distributed in 6 rows and 7 columns.
+-Two colors of pieces: Blue and Red
+-Make obvious which column you are hovering over
+*/
+
+
+/*Columns and rows
+.vertLines {
+   display: grid;
+   grid-template-columns: repeat(7, 1fr);
+   grid-template-rows: repeat(6, 100px);
+  background-color: white;
+  border: solid 1px;
+  column-gap: 1px;
+    row-gap: 1px;
+}
+
+.slot1 {
+  grid-column-start: 1;
+   grid-column-end: 2;
+   grid-row-start: 1;
+   grid-row-end: 7;
+  border: solid 1px;
+}
+
+.slot2 {
+  grid-column-start: 2;
+   grid-column-end: 3;
+   grid-row-start: 1;
+   grid-row-end: 7;
+  border: solid 1px;
+}
+
+.slot3 {
+  grid-column-start: 3;
+   grid-column-end: 4;
+   grid-row-start: 1;
+   grid-row-end: 7;
+  border: solid 1px;
+}
+
+.slot4 {
+  grid-column-start: 4;
+   grid-column-end: 5;
+   grid-row-start: 1;
+   grid-row-end: 7;
+  border: solid 1px;
+}
+
+.slot5 {
+  grid-column-start: 5;
+   grid-column-end: 6;
+   grid-row-start: 1;
+   grid-row-end: 7;
+  border: solid 1px;
+}
+
+.slot6 {
+  grid-column-start: 6;
+   grid-column-end: 7;
+   grid-row-start: 1;
+   grid-row-end: 7;
+  border: solid 1px;
+}
+
+.slot7 {
+  grid-column-start: 7;
+   grid-column-end: 8;
+   grid-row-start: 1;
+   grid-row-end: 7;
+  border: solid 1px;
+}
+
+.newGame {
+  background-color: pink;
+ width: 10vw;
+  height: 5vh;
+  border: none;
+  border-radius: 15px;
+  font: Helvetica;
+}
+*/
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
+  font-family: Helvetica;
+}
+
+.board-slot {
+  width: 100px;
+  height: 95px;
+  background: white;
+  border: 1px solid #ff4565;
+  border-radius: 50%;
+}
+
+#game-board-container {
+  padding: 24px;
+  position: absolute;
+  transform: translate(-50%);
+  left: 50%;
+  width: 700px;
+  height: 650px;
+  border: none;
+  background: #ff91a4;
+}
+
+#replay-game {
+  position: absolute;
+  top: 95vh;
+  left: 47%;
+  background-color: #91a4ff;
+  border: none;
+  padding: 15px;
+  border-radius: 15px;
+  color: white;
+  font-size: 15px;
+  font-family: Helvetica;
+}
