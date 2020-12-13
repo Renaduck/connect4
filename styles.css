@@ -96,7 +96,7 @@ h1 {
   font-family: Helvetica;
 }
 
-.board-slot {
+.boardCell {
   width: 100px;
   height: 95px;
   background: white;
@@ -104,7 +104,7 @@ h1 {
   border-radius: 50%;
 }
 
-#game-board-container {
+#gameBoardContainer {
   padding: 24px;
   position: absolute;
   transform: translate(-50%);
@@ -115,7 +115,7 @@ h1 {
   background: #ff91a4;
 }
 
-#replay-game {
+#restartGameButton {
   position: absolute;
   top: 95vh;
   left: 47%;
@@ -126,4 +126,22 @@ h1 {
   color: white;
   font-size: 15px;
   font-family: Helvetica;
+}
+
+#gameRules {
+  position: fixed;
+  left: 80%;
+  height: 100px;
+  width: 200px;
+  background: none;
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica;
+  font-size: medium;
+}
+
+#gameStatusText {
+  font-family: Helvetica;
+  left: 10%;
+  position: fixed;
 }
