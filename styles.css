@@ -2,11 +2,15 @@
 REQUIREMENTS:
 -board with 42 windows distributed in 6 rows and 7 columns.
 -Two colors of pieces: Blue and Red
--Make obvious which column you are hovering over
+-uniform font
+-board must look like connect 4
 */
 
 
 /*Columns and rows
+
+old attempt at building board, kept for posterity 
+
 .vertLines {
    display: grid;
    grid-template-columns: repeat(7, 1fr);
@@ -81,6 +85,8 @@ REQUIREMENTS:
   border-radius: 15px;
   font: Helvetica;
 }
+
+new board css below:
 */
 
 *{

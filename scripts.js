@@ -2,20 +2,26 @@
   REQUIREMENTS:
     -New game start
     -Player must have 4 pieces in a row either horizontally, vertically, or diagonally to win
+    -must check for win in all directions
     -Only two players at a time
     -Player can only place one piece at a time
-    -Each player has 21 pieces
     -When board is filled with no winner, game ends in a tie
-    -Random decision for who gets first move 
-    -Pieces can only drop to the bottom of the board or just above any piece previously dropped in column
+    -no moves should be able to be made once the game has ended 
+    -must have restart button
+    -Pieces can only drop to the bottom of the board or above any piece previously dropped in column
+    -must update text if player wins or if a turn is ongoing
+    -must have a restart game button that resets the board and turns
 */
 
 const BOARD_COLUMNS = 7;
 const BOARD_ROWS = 6;
 
+
 const NOBODY = 0;
 const PLAYER_1 = 1;
 const PLAYER_2 = -1;
+
+//play statuses
 
 const STATUS = {
   [NOBODY]: {
@@ -59,6 +65,7 @@ function nextTurn() {
 
 function updateGameStatus(statusText) {
   document.getElementById('gameStatusText').innerHTML = statusText
+  
 }
 
 function getBoardCellString(row, column) {
@@ -72,6 +79,7 @@ function getPlayerColor(player) {
 function setBoardCellCss(row, column, player) {
   const cell = document.getElementById(`boardCell-${row}-${column}`);
   cell.style.backgroundColor = getPlayerColor(player);
+  
 }
 
 function clearBoardCss() {
@@ -80,6 +88,8 @@ function clearBoardCss() {
     boardCells[i].style.backgroundColor = getPlayerColor(NOBODY);
   }
 }
+
+
 
 function getBoardCell(row, column) {
   return board[getBoardCellString(row, column)];
@@ -98,30 +108,37 @@ function isBottomRow(row) {
   return (row + 1) === BOARD_ROWS;
 }
 
+
+
 function isLegalBoardMove(row, column) {
   const atBottom = isBottomRow(row);
   const overPiece = !isCellEmpty(row+1, column);
   const isEmpty = isCellEmpty(row, column);
   return (atBottom || overPiece) && isEmpty;
+  
 }
+
+
 
 function isWinningMove(player, row, column) {
   const topLeft = countPiecesInDirection(player, row, column, -1, -1);
   const top = countPiecesInDirection(player, row, column, -1, 0);
   const topRight = countPiecesInDirection(player, row, column, -1, 1);
-  const left = countPiecesInDirection(player, row, column, 0, -1);
+   const left = countPiecesInDirection(player, row, column, 0, -1);
   const right = countPiecesInDirection(player, row, column, 0, 1);
   const bottomLeft = countPiecesInDirection(player, row, column, 1, -1);
   const bottom = countPiecesInDirection(player, row, column, 1, 0);
-  const bottomRight = countPiecesInDirection(player, row, column, 1, 1);
+   const bottomRight = countPiecesInDirection(player, row, column, 1, 1);
   
   const isWinningHorizontal = left + right + 1 >= 4;
   const isWinningVertical = top + bottom + 1 >= 4;
   const isWinningLeftDiag = topLeft + bottomRight + 1 >= 4;
-  const isWinningRightDiag = bottomLeft + topRight + 1 >= 4;
+   const isWinningRightDiag = bottomLeft + topRight + 1 >= 4;
   
   return isWinningHorizontal || isWinningVertical || isWinningLeftDiag || isWinningRightDiag
 }
+
+
 
 function countPiecesInDirection(player, row, column, rowDir, columnDir) {
   let pieces = 0;
@@ -142,6 +159,9 @@ function countPiecesInDirection(player, row, column, rowDir, columnDir) {
   return pieces;
 }
 
+
+
+
 function isBoardFull() {
   return Object.keys(board).length === (BOARD_ROWS * BOARD_COLUMNS)
 }
@@ -155,7 +175,9 @@ function restartGame() {
 function endGame(winner) {
   gameState = GAME_OVER;
   updateGameStatus(STATUS[winner].won);
+  
 }
+
 
 function handleClick(row, column) {
   if (gameState !== PLAYING || !isLegalBoardMove(row, column)) {
@@ -175,6 +197,9 @@ function handleClick(row, column) {
   nextTurn();
 }
 
+
+
+
 function registerClickHandlers() {
   var boardCells = document.getElementsByClassName('boardCell');
   for (var i = 0; i < boardCells.length; i++) {
@@ -185,6 +210,7 @@ function registerClickHandlers() {
   
   const restartGameButton = document.getElementById('restartGameButton')
   restartGameButton.onclick = () => restartGame();
+  
 }
 
 function newGame() {
