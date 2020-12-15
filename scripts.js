@@ -105,12 +105,14 @@ function isCellEmpty(row, column) {
 }
 
 function isBottomRow(row) {
+  
   return (row + 1) === BOARD_ROWS;
 }
 
 
 
 function isLegalBoardMove(row, column) {
+  
   const atBottom = isBottomRow(row);
   const overPiece = !isCellEmpty(row+1, column);
   const isEmpty = isCellEmpty(row, column);
@@ -121,6 +123,7 @@ function isLegalBoardMove(row, column) {
 
 
 function isWinningMove(player, row, column) {
+  
   const topLeft = countPiecesInDirection(player, row, column, -1, -1);
   const top = countPiecesInDirection(player, row, column, -1, 0);
   const topRight = countPiecesInDirection(player, row, column, -1, 1);
